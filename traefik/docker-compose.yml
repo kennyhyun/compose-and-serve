@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 
 services:
   traefik:
@@ -17,7 +17,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./data/traefik.yml:/etc/traefik/traefik.yml:ro
-      - ./data/user.secrets:/etc/traefik/user.secrets:ro
+      - type: bind
+        source: ./data/user.secrets
+        target: /etc/traefik/user.secrets
+        read_only: true
       - ./data/acme.json:/etc/traefik/acme.json
     labels:
       - "traefik.enable=true"

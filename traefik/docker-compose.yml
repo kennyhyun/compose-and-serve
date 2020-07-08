@@ -21,7 +21,9 @@ services:
         source: ./data/user.secrets
         target: /etc/traefik/user.secrets
         read_only: true
-      - ./data/acme.json:/etc/traefik/acme.json
+      - type: bind
+        source: ./data/acme.json
+        target: /etc/traefik/acme.json
     labels:
       - "traefik.enable=true"
 

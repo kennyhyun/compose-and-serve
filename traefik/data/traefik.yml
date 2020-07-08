@@ -22,7 +22,7 @@ certificatesResolvers:
   http:
     acme:
       email: kenny@yeoyou.net
-      storage: acme.json
+      storage: /etc/traefik/acme.json
       httpChallenge:
         entryPoint: http
 

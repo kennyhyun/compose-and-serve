@@ -1,0 +1,58 @@
+api:
+  dashboard: true
+  insecure: true
+  debug: true
+
+entryPoints:
+  http:
+    address: :80
+  https:
+    address: :443
+
+providers:
+  file:
+    filename: /etc/traefik/traefik.yml
+    watch: true
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    network: proxy
+    exposedByDefault: false
+
+certificatesResolvers:
+  http:
+    acme:
+      email: kenny@yeoyou.net
+      storage: acme.json
+      httpChallenge:
+        entryPoint: http
+
+http:
+  routers:
+    insecureDashboard:
+      entrypoints:
+        - http
+      rule: Host(`traefik.yeoyou.net`)
+      service: noop
+      middlewares:
+        - redirectToHttps
+    dashboard:
+      entrypoints:
+        - https
+      tls:
+        certResolver: http
+      rule: Host(`traefik.yeoyou.net`)
+      service: api@internal
+      middlewares:
+        - auth
+  services:
+    noop:
+      loadBalancer:
+        servers:
+        - url: "http://never-called"
+  middlewares:
+    redirectToHttps:
+      redirectScheme:
+        scheme: https
+    auth:
+      basicAuth:
+        usersFile: /etc/traefik/user.secrets

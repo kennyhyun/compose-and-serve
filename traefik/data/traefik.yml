@@ -48,11 +48,34 @@ http:
       service: api@internal
       middlewares:
         - auth
+
+    bt:
+      entrypoints:
+        - https
+      tls:
+        certResolver: http
+      rule: Host(`bt.yeoyou.net`)
+      service: bt
+    bt-insecure:
+      entrypoints:
+        - http
+      rule: Host(`bt.yeoyou.net`)
+      middlewares:
+        - redirectToHttps
+      service: bt
+
   services:
+    bt:
+      type:
+      loadBalancer:
+        servers:
+        - url: "http://127.0.0.1:9091"
+
     noop:
       loadBalancer:
         servers:
         - url: "http://never-called"
+
   middlewares:
     redirectToHttps:
       redirectScheme:

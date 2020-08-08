@@ -26,6 +26,10 @@ certificatesResolvers:
       httpChallenge:
         entryPoint: http
 
+log:
+  level: DEBUG
+  format: json
+
 http:
   routers:
     insecureDashboard:

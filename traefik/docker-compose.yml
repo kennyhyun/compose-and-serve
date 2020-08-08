@@ -3,7 +3,7 @@ version: '3.6'
 services:
   traefik:
     image: traefik:v2.2
-    container_name: traefik
+    container_name: "traefik${CONTAINER_SUFFIX:-}"
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -29,3 +29,4 @@ services:
 
 networks:
   proxy:
+    name: ${NETWORK_NAME:-proxy}

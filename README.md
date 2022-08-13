@@ -21,7 +21,7 @@ the configuration will set traefik.domain-you-set and bt.domain-you-set
 
 #### Running the container
 
-`docker-compse up -d` in the `traefik` directory.
+`docker-compse up -d` or `docker compse up -d` in the `traefik` directory.
 
 you will see the traefik dashbaord in `http://192.168.0.2:8080` where your server address is `192.168.0.2` and
 `https://traefik.<domain-you-set>/`

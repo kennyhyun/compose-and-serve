@@ -21,7 +21,7 @@ the configuration will set traefik.domain-you-set and bt.domain-you-set
 
 #### Running the container
 
-- `touch data/acme.json && chmod 600 data/acme.json`
+- `touch data/acme.json && chmod 600 data/acme.json` -- only for the first time
 - `docker-compse up -d` or `docker compse up -d` in the `traefik` directory.
 
 you will see the traefik dashbaord in `http://192.168.0.2:8080` where your server address is `192.168.0.2` and

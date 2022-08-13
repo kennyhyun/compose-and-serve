@@ -21,9 +21,14 @@ the configuration will set traefik.domain-you-set and bt.domain-you-set
 
 #### Running the container
 
-`docker-compse up -d` or `docker compse up -d` in the `traefik` directory.
+- `chmod 600 data/acme.json`
+- `docker-compse up -d` or `docker compse up -d` in the `traefik` directory.
 
 you will see the traefik dashbaord in `http://192.168.0.2:8080` where your server address is `192.168.0.2` and
 `https://traefik.<domain-you-set>/`
 
 
+#### If the certificates not generated
+
+- check the permission of the `data/acme.json`. it should be 600
+- open both 80 and 443 ports for the inbound connection for the server

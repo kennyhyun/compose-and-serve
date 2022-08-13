@@ -9,6 +9,8 @@ services:
       - no-new-privileges:true
     networks:
       - proxy
+    environment:
+      - ACME_DOMAIN=${ACME_DOMAIN}
     ports:
       - 80:80
       - 8080:8080

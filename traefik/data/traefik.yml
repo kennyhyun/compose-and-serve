@@ -21,7 +21,7 @@ providers:
 certificatesResolvers:
   http:
     acme:
-      email: kenny@yeoyou.net
+      email: email@sample.yeoyou.net
       storage: /etc/traefik/acme.json
       httpChallenge:
         entryPoint: http
@@ -35,7 +35,7 @@ http:
     insecureDashboard:
       entrypoints:
         - http
-      rule: Host(`traefik.yeoyou.net`)
+      rule: Host(`traefik.{{ env "ACME_DOMAIN" }}`)
       service: noop
       middlewares:
         - redirectToHttps
@@ -44,7 +44,7 @@ http:
         - https
       tls:
         certResolver: http
-      rule: Host(`traefik.yeoyou.net`)
+      rule: Host(`traefik.{{ env "ACME_DOMAIN" }}`)
       service: api@internal
       middlewares:
         - auth
@@ -54,12 +54,12 @@ http:
         - https
       tls:
         certResolver: http
-      rule: Host(`bt.yeoyou.net`)
+      rule: Host(`bt.{{ env "ACME_DOMAIN" }}`)
       service: bt
     bt-insecure:
       entrypoints:
         - http
-      rule: Host(`bt.yeoyou.net`)
+      rule: Host(`bt.{{ env "ACME_DOMAIN" }}`)
       middlewares:
         - redirectToHttps
       service: bt

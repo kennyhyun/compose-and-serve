@@ -13,7 +13,8 @@ the configuration will set traefik.domain-you-set and bt.domain-you-set
 
 #### Configuration
 
-- Copy `.env.sample` to `.env` and edit your domain and email address in it.
+- Copy `.env.sample` to `.env` and edit your domain in it.
+- edit email in `data/traefik.yml`
 - Run the command to set the `data/user.secrets`
   - `htpasswd -nB <user> | tee data/user.secrets` -- modify `<user>` as your login user to the traefik dashboard
 

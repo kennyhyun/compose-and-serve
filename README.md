@@ -15,7 +15,7 @@ the configuration will set traefik.domain-you-set and bt.domain-you-set
 
 - Copy `.env.sample` to `.env` and edit your domain and email address in it.
 - Run the command to set the `data/user.secrets`
-  - `htpasswd -nB <user> | tee data/user/secrets` -- modify `<user>` as your login user to the traefik dashboard
+  - `htpasswd -nB <user> | tee data/user.secrets` -- modify `<user>` as your login user to the traefik dashboard
 
 ** To install htpasswd, run `sudo apt install apache2-utils` for Ubuntu for example
 

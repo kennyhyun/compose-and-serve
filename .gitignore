@@ -106,3 +106,4 @@ dist
 *.zip
 *.bak
 /secrets
+/traefik/extract

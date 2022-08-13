@@ -1,0 +1,1 @@
+docker run --rm --name extractor -d -v /home/kenny/Projects/kenny/compose-and-serve/traefik/data:/acme -v /home/kenny/Projects/kenny/compose-and-serve/traefik/extract:/certs devopsansiblede/acme_certs_extract

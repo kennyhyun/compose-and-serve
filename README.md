@@ -32,3 +32,4 @@ you will see the traefik dashbaord in `http://192.168.0.2:8080` where your serve
 
 - check the permission of the `data/acme.json`. it should be 600
 - open both 80 and 443 ports for the inbound connection for the server
+- wait until the new domain record is propagated (if you added recently)

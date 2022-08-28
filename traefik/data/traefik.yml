@@ -35,7 +35,7 @@ http:
     insecureDashboard:
       entrypoints:
         - http
-      rule: Host(`traefik.{{ env "ACME_DOMAIN" }}`)
+      rule: Host(`{{ env "TRAEFIK_SUBDOMAIN" }}.{{ env "ACME_DOMAIN" }}`)
       service: noop
       middlewares:
         - redirectToHttps
@@ -44,7 +44,7 @@ http:
         - https
       tls:
         certResolver: http
-      rule: Host(`traefik.{{ env "ACME_DOMAIN" }}`)
+      rule: Host(`{{ env "TRAEFIK_SUBDOMAIN" }}.{{ env "ACME_DOMAIN" }}`)
       service: api@internal
       middlewares:
         - auth
